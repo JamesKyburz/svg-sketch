@@ -1,0 +1,28 @@
+.svg-widget {
+  height: 100%;
+}
+
+.svg-widget .grid {
+  border: solid 2px #F7F8A6;
+}
+
+.svg-widget svg *:not(.grid):not(text):not(tspan) {
+  stroke-width: 1px;
+}
+
+.svg-widget svg text {
+  stroke-width: 0;
+  fill: none;
+  margin: 0;
+  padding: 0;
+}
+
+.svg-widget svg[data-control=move] *:not(.grid):hover,
+.svg-widget svg[data-control=rubber] *:not(.grid):hover {
+  cursor: move;
+  stroke-width: 2px;
+}
+
+.svg-widget svg[data-control=text] text:hover {
+  cursor: pointer;
+}

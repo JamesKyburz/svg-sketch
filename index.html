@@ -1,0 +1,14 @@
+<div class="svg-widget">
+  <svg height="100%" width="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" shape-rendering="auto" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <pattern id="smallGrid" width="8" height="8" patternUnits="userSpaceOnUse">
+        <path d="M 8 0 L 0 0 0 8" fill="none" stroke="#ccc" stroke-width="0.5" />
+      </pattern>
+      <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+        <rect class="smallGrid" width="80" height="80" fill="url(#smallGrid)" stroke="#ddd" />
+        <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#bbb" stroke-width="0.5"/>
+      </pattern>
+    </defs>
+    <rect class="grid" width="100%" height="100%" fill="url(#grid)"/>
+  </svg>
+</div>
