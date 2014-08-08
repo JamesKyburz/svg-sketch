@@ -2,6 +2,7 @@
 
 svg-sketch
 
+[![build status](https://api.travis-ci.org/JamesKyburz/svg-sketch.svg)](https://api.travis-ci.org/JamesKyburz/svg-sketch.svg)
 Try it out! [![view on requirebin](http://requirebin.com/badge.png)](http://requirebin.com/?gist=0dc5356985194d0b8466)
 
 use with [browserify](http://browserify.org)
