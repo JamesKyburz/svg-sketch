@@ -1,6 +1,8 @@
 # svg-sketch
 
-svg-sketch
+svg widget with built in json eventstream
+
+svg -> json -> what ever FTW
 
 [![build status](https://api.travis-ci.org/JamesKyburz/svg-sketch.svg)](https://api.travis-ci.org/JamesKyburz/svg-sketch.svg)
 
