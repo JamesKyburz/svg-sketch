@@ -2,7 +2,7 @@
 Function.prototype.bind = require('function-bind');
 
 // setup svg dom
-var svg = require('svg-sketch')();
+var svg = require('../')();
 var controls = require('svg-sketch-controls');
 var test = require('tape');
 
