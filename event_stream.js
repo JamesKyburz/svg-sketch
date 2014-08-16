@@ -91,5 +91,7 @@ function validEvent(event) {
     return !!event.args.d.match(/a|l/i);
   }
 
-  return true;
+  return Object.keys(event.args || {}).length +
+         Object.keys(event.layout || {}).length > 0
+  ;
 }
