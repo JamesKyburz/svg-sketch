@@ -16,7 +16,7 @@
     ]
   },
   "main": "index.js",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "testling": {
     "files": "test/*.js"
