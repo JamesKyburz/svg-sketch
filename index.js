@@ -83,9 +83,7 @@ Svg.prototype.appendTo = function appendTo(el) {
 
   this.controls = {};
 
-  setTimeout(function addEventListener() {
-    this._eventListeners('addEventListener');
-  }.bind(this), 701);
+  this._eventListeners('addEventListener');
 
   return this;
 };
