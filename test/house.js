@@ -33,7 +33,10 @@ test('draw a house', function(t) {
     svg[item[0]]({preventDefault: Function, pageX: item[2], pageY: item[3]});
   }
 
-  t.deepEqual(svg.eventStream.toJSON(), expected);
-  t.end();
+  process.nextTick(function() {
+    t.deepEqual(svg.eventStream.toJSON(), expected);
+    t.end();
+  });
+
 });
 

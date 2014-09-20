@@ -36,7 +36,7 @@
     "browserify": "^5.11.1",
     "faucet": "0.0.1",
     "function-bind": "^0.1.0",
-    "svg-sketch-controls": "0.0.1",
+    "svg-sketch-controls": "0.0.2",
     "tape": "^2.14.0",
     "testling": "^1.7.0"
   }
