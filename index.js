@@ -277,7 +277,7 @@ Svg.prototype._redraw = function redraw(events) {
       if (event.args.value) {
         el.innerHTML = '';
         if (event.layout && event.layout.style && event.layout.style.width) {
-          var match = new RegExp('.{0,' + event.layout.style.width / 5 + '}', 'g');
+          var match = new RegExp('.{0,' + (event.layout.style.width / 5 | 0) + '}', 'g');
           event.args.value.match(match).forEach(function wrap(text, i) {
             if (i === 0) {
               el.textContent = text;
