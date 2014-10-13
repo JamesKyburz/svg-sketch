@@ -313,9 +313,11 @@ Svg.prototype._redraw = function redraw(events) {
       el.setAttribute('class', event.layout.class);
     }
     if (event.layout && event.layout.font) {
-      self.font = copy(self.fonts[event.layout.font.name]);
-      if (event.layout.font.size) {
-        self.font['font-size'] = event.layout.font.size;
+      if (self.fonts[event.layout.font.name]) {
+        self.font = copy(self.fonts[event.layout.font.name]);
+        if (event.layout.font.size) {
+          self.font['font-size'] = event.layout.font.size;
+        }
       }
     }
 
