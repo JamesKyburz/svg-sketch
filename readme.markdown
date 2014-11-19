@@ -6,6 +6,8 @@ svg -> json -> what ever FTW
 
 [![build status](https://api.travis-ci.org/JamesKyburz/svg-sketch.svg)](https://api.travis-ci.org/JamesKyburz/svg-sketch.svg)
 
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/svg-sketch.svg)](https://saucelabs.com/u/svg-sketch)
+
 Try it out! [![view on requirebin](http://requirebin.com/badge.png)](http://requirebin.com/?gist=0dc5356985194d0b8466)
 
 use with [browserify](http://browserify.org)

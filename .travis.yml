@@ -1,7 +1,8 @@
 language: node_js
 node_js:
-  - "0.11"
-  - "0.10"
-before_install:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
+- '0.10'
+script: npm run test-browsers
+env:
+  global:
+  - secure: WBPZcGHOX0dp0KSDgOdYhm0peisSB1A0QAEv2juykSjJV8wOy9LoS9TxdpjZHVMAGY5ybIGpb+0EKcMcHQZjE4k2SrAmMaE87Oqiwf1uaWeEZaiV+OrSH2CzVyLTLAIHhVld3F4BpV0FWPoFfABgmxFC0Qdr4WdfuchCJ7X9ru4=
+  - secure: V+wQdTNbTBv1qkynGPsserTL1WLIcqHiCffV1zcHrBzWS6oSH9gYUS5I7w2iXiQTFLotcVshm4+EwfAUCZtfMTv2ZkeTT1arPPQJL+P1EbLlyXrXaBIkY3ZYegJqmsDN4EO0+i60KEvdFwi9HH8fdgZYUiJWs23a6TqupRX3Zpk=
