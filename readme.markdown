@@ -68,6 +68,12 @@ With [npm](https://npmjs.org) do:
 npm install svg-sketch
 ```
 
+# test
+
+```
+npm test
+```
+
 # license
 
 MIT
