@@ -16,7 +16,7 @@
     ]
   },
   "main": "index.js",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "license": "MIT",
   "scripts": {
     "test": "zuul test/*.js --phantom | faucet",
