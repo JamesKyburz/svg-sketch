@@ -31,7 +31,6 @@
     "xtend": "^4.0.0"
   },
   "devDependencies": {
-    "browserify": "^6.3.2",
     "faucet": "0.0.1",
     "function-bind": "^1.0.2",
     "svg-sketch-controls": "0.0.2",
