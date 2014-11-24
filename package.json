@@ -33,6 +33,7 @@
   "devDependencies": {
     "faucet": "0.0.1",
     "function-bind": "^1.0.2",
+    "remove-saucelabs-jobs-by-build": "^1.0.0",
     "svg-sketch-controls": "0.0.2",
     "tape": "^3.0.3",
     "zuul": "git://github.com/defunctzombie/zuul.git#master"
