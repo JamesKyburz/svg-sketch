@@ -7,6 +7,7 @@ var copy         = require('shallow-copy');
 var xtend        = require('xtend');
 var fs           = require('fs');
 var insertCss    = require('insert-css');
+var rgb2hex      = require('rgb2hex');
 
 var idSequence = 0;
 
@@ -255,6 +256,7 @@ Svg.prototype._redraw = function redraw(events) {
   function create(event) {
     if (event.type === 'style') {
       self.style = xtend(self.DEFAULT_STYLE, event.args);
+      self.style.stroke = rgb2hex(self.style.stroke);
       return;
     }
     var el = event.el || (function() {
@@ -348,7 +350,7 @@ Svg.prototype.resize = function resize(width, height) {
 };
 
 Svg.prototype.setColor = function setColor(color) {
-  if (this.style.stroke === color) return;
+  if (this.style.stroke === rgb2hex(color)) return;
   var event;
   this.eventStream.push(event = {
     type: 'style',
