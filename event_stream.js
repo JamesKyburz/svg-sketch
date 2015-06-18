@@ -1,5 +1,6 @@
-var copy         = require('shallow-copy');
-var xtend        = require('xtend');
+var copy  = require('shallow-copy');
+var xtend = require('xtend');
+var Color = require('color');
 
 module.exports = EventStream;
 
@@ -29,10 +30,16 @@ EventStream.prototype.toJSON = function toJSON() {
   );
 
   function createEvent(event) {
+    var args = copy(event.args);
+    if (args) {
+      ;['stroke', 'fill'].forEach(function setRgb(key) {
+        if (args[key]) args[key] = Color(args[key]).rgbaString();
+      });
+    }
     return {
       type: event.type,
       id: event.id,
-      args: copy(event.args),
+      args: args,
       layout: event.layout,
       pathId: event.path ? event.path.id : undefined
     };

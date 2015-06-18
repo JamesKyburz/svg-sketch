@@ -7,7 +7,7 @@ var copy         = require('shallow-copy');
 var xtend        = require('xtend');
 var fs           = require('fs');
 var insertCss    = require('insert-css');
-var rgb2hex      = require('rgb2hex');
+var Color        = require('color');
 
 var idSequence = 0;
 
@@ -23,8 +23,8 @@ function Svg() {
   this.html = fs.readFileSync(__dirname + '/index.html', 'utf-8');
 
   this.DEFAULT_STYLE = {
-    fill: 'transparent',
-    stroke: '#000000'
+    fill: 'rgba(0, 0, 0, 0)',
+    stroke: 'rgb(0, 0, 0, 1)'
   };
 
   this._resetStyle();
@@ -256,7 +256,6 @@ Svg.prototype._redraw = function redraw(events) {
   function create(event) {
     if (event.type === 'style') {
       self.style = xtend(self.DEFAULT_STYLE, event.args);
-      self.style.stroke = rgb2hex(self.style.stroke);
       return;
     }
     var el = event.el || (function() {
@@ -350,31 +349,18 @@ Svg.prototype.resize = function resize(width, height) {
 };
 
 Svg.prototype.setColor = function setColor(color) {
-  if (this.style.stroke === rgb2hex(color)) return;
-  var event;
-  this.eventStream.push(event = {
-    type: 'style',
-    args: {
-      stroke: color
-    }
-  });
-  this._redraw([event]);
+  if (Color(this.style.stroke).rgbaString() === Color(color).rgbaString()) return;
+  this.setStyle({stroke: Color(color).rgbaString()});
 };
 
 Svg.prototype.setStyle = function setStyle(opt) {
-  var reset = {
+  var style = xtend(this.style, opt);
+  var event = {
     type: 'style',
-    args: {
-      reset: true
-    }
+    args: style
   };
-  var style = {
-    type: 'style',
-    args: opt
-  };
-  this.eventStream.push(reset);
-  this.eventStream.push(style);
-  this._redraw([reset, style]);
+  this.eventStream.push(event);
+  this._redraw([event]);
 };
 
 Svg.prototype._undo = function undo() {
