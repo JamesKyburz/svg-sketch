@@ -46,6 +46,8 @@ set viewport to width and height
 
 set current drawing color in hex or rgb
 
+## sketch.setStyle(style)
+
 ## sketch.setGridStyle(style)
 
 override grid style used

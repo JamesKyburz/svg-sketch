@@ -299,7 +299,7 @@ Svg.prototype._redraw = function redraw(events) {
     if (event.type === 'delete') {
       el.style.display = 'none';
     } else {
-      if (!!!event.target) {
+      if (!event.target) {
         var style = copy(self.style);
         if (event.type === 'text') style.fill = style.stroke;
         applyStyle(el, style);
@@ -347,7 +347,7 @@ Svg.prototype.resize = function resize(width, height) {
   }
 };
 
-Svg.prototype.setColor = function(color) {
+Svg.prototype.setColor = function setColor(color) {
   if (this.style.stroke === color) return;
   var event;
   this.eventStream.push(event = {
@@ -357,6 +357,22 @@ Svg.prototype.setColor = function(color) {
     }
   });
   this._redraw([event]);
+};
+
+Svg.prototype.setStyle = function setStyle(opt) {
+  var reset = {
+    type: 'style',
+    args: {
+      reset: true
+    }
+  };
+  var style = {
+    type: 'style',
+    args: opt
+  };
+  this.eventStream.push(reset);
+  this.eventStream.push(style);
+  this._redraw([reset, style]);
 };
 
 Svg.prototype._undo = function undo() {
