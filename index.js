@@ -24,7 +24,7 @@ function Svg() {
 
   this.DEFAULT_STYLE = {
     fill: 'rgba(0, 0, 0, 0)',
-    stroke: 'rgb(0, 0, 0, 1)'
+    stroke: 'rgba(0, 0, 0, 1)'
   };
 
   this._resetStyle();
