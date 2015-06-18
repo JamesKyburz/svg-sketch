@@ -178,15 +178,17 @@ Svg.prototype.setControl = function setControl(control) {
 
 Svg.prototype._init = function init(events) {
   var self = this;
-  var color, controlName;
+  var color, style, controlName;
 
   events.forEach(setDefaults);
 
+  this.emit('changeStyle', style || self.style);
   this.emit('changeColor', color || self.DEFAULT_STYLE.stroke);
   if (controlName) self.setControl(controlName);
 
   function setDefaults(event) {
     if (event.type === 'style') {
+      style = event.args;
       if (event.args.stroke) {
         color = event.args.stroke;
       }

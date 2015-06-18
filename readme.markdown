@@ -58,6 +58,8 @@ override grid style used
 
 ## svg.changeColor(color)
 
+## svg.changeStyle(style)
+
 ## svg.eventStream(events)
 
 complete json structure for drawing
