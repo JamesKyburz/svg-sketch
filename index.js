@@ -356,7 +356,7 @@ Svg.prototype.setColor = function setColor(color) {
 };
 
 Svg.prototype.setStyle = function setStyle(opt) {
-  var style = xtend(this.style, opt);
+  var style = xtend(this.DEFAULT_STYLE, opt);
   var event = {
     type: 'style',
     args: style
