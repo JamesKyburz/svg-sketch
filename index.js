@@ -180,11 +180,13 @@ Svg.prototype._init = function init(events) {
   var self = this;
   var color, style, controlName;
 
+  this.silent = true;
   events.forEach(setDefaults);
-
   this.emit('changeStyle', style || self.style);
   this.emit('changeColor', color || self.DEFAULT_STYLE.stroke);
   if (controlName) self.setControl(controlName);
+
+  this.silent = false;
 
   function setDefaults(event) {
     if (event.type === 'style') {
@@ -361,7 +363,7 @@ Svg.prototype.setStyle = function setStyle(opt) {
     type: 'style',
     args: style
   };
-  this.eventStream.push(event);
+  if (!this.silent) this.eventStream.push(event);
   this._redraw([event]);
 };
 
