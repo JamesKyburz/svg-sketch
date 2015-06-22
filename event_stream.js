@@ -80,6 +80,7 @@ EventStream.prototype.toJSON = function toJSON() {
 
   function duplicateStyle(event) {
     if (event.type === 'style') {
+      if (lastType === 'style') return true;
       var json = JSON.stringify(event);
       var duplicate = lastStyle === json;
       lastStyle = json;
@@ -91,7 +92,6 @@ EventStream.prototype.toJSON = function toJSON() {
 function validEvent(event) {
   if (event.deleted) return false;
 
-  if (event.type === 'style' && lastType === 'style') return;
   if (event.type === 'text') {
     return !!event.args.value;
   }
