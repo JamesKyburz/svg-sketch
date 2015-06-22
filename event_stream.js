@@ -20,7 +20,7 @@ EventStream.prototype.pop = function pop() {
 };
 
 EventStream.prototype.toJSON = function toJSON() {
-  var self = this, lastStyle;
+  var self = this, lastStyle, lastType;
   this.normalized = this.events.map(createEvent);
   this.normalized.forEach(processPath);
 
@@ -62,6 +62,7 @@ EventStream.prototype.toJSON = function toJSON() {
 
   function reduce(result, event) {
     if (validEvent(event) && !duplicateStyle(event)) {
+      lastType = event.type;
       result.push(
         ['type', 'args', 'layout'].reduce(copyEvent, {})
       );
@@ -90,6 +91,7 @@ EventStream.prototype.toJSON = function toJSON() {
 function validEvent(event) {
   if (event.deleted) return false;
 
+  if (event.type === 'style' && lastType === 'style') return;
   if (event.type === 'text') {
     return !!event.args.value;
   }
