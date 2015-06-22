@@ -20,7 +20,8 @@ EventStream.prototype.pop = function pop() {
 };
 
 EventStream.prototype.toJSON = function toJSON() {
-  var self = this, lastStyle, lastType;
+  var self = this;
+  var lastType;
   this.normalized = this.events.map(createEvent);
   this.normalized.forEach(processPath);
 
@@ -61,7 +62,8 @@ EventStream.prototype.toJSON = function toJSON() {
   }
 
   function reduce(result, event) {
-    if (validEvent(event) && !duplicateStyle(event)) {
+    if (event.type === 'style' && lastType === 'style') result.pop();
+    if (validEvent(event)) {
       lastType = event.type;
       result.push(
         ['type', 'args', 'layout'].reduce(copyEvent, {})
@@ -76,16 +78,6 @@ EventStream.prototype.toJSON = function toJSON() {
       return result;
     }
     return result;
-  }
-
-  function duplicateStyle(event) {
-    if (event.type === 'style') {
-      if (lastType === 'style') return true;
-      var json = JSON.stringify(event);
-      var duplicate = lastStyle === json;
-      lastStyle = json;
-      return duplicate;
-    }
   }
 };
 
