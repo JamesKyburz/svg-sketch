@@ -167,10 +167,10 @@ Svg.prototype._resetEvents = function resetEvents() {
 };
 
 Svg.prototype.setControl = function setControl(control) {
-  this.el.setAttribute('data-control', control);
   if (control === 'grid') return this._grid();
   if (control === 'undo') return this._undo();
   if (control === 'redo') return this._redo();
+  this.el.setAttribute('data-control', control);
   this.control = this.controls[control];
   this.emit('changeControl', control);
   if (!this.control) throw new Error('control ' + control + ' not supported');
