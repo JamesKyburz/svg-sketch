@@ -4,6 +4,8 @@ var Color = require('color');
 
 module.exports = EventStream;
 
+EventStream.validEvent = validEvent;
+
 function EventStream() {
   if (!(this instanceof EventStream)) return new EventStream();
   this.events = [];
