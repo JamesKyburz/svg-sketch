@@ -29,7 +29,8 @@
     "inherits": "^2.0.1",
     "insert-css": "^0.2.0",
     "shallow-copy": "0.0.1",
-    "xtend": "^4.0.0"
+    "xtend": "^4.0.0",
+    "zuul": "^3.2.0"
   },
   "devDependencies": {
     "faucet": "0.0.1",
