@@ -35,8 +35,8 @@
     "faucet": "0.0.1",
     "function-bind": "^1.0.2",
     "remove-saucelabs-jobs-by-build": "^1.0.0",
-    "svg-sketch-controls": "0.0.2",
-    "tape": "^3.0.3",
+    "svg-sketch-controls": "^1.0.5",
+    "tape": "^4.0.3",
     "zuul": "^3.2.0"
   }
 }
