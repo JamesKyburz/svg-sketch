@@ -1,7 +1,6 @@
 var hyperglue    = require('hyperglue');
 var EventEmitter = require('events').EventEmitter;
 var inherits     = require('inherits');
-var debugEvents  = require('./debug_events');
 var EventStream  = require('./event_stream');
 var copy         = require('shallow-copy');
 var xtend        = require('xtend');
@@ -138,7 +137,6 @@ Svg.prototype._triggerEventsChanged = function trigger() {
     clearTimeout(trigger.timer);
     trigger.timer = null;
   }
-  debugEvents(this.eventStream);
   trigger.timer = setTimeout(function() {
     this.emit('eventStream', this.eventStream.toJSON());
   }.bind(this), 300);
