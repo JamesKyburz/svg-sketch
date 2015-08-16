@@ -171,8 +171,8 @@ Svg.prototype._resetEvents = function resetEvents() {
 
 Svg.prototype.setControl = function setControl(control) {
   if (control === 'grid') return this._grid();
-  if (control === 'undo') return this._undo();
-  if (control === 'redo') return this._redo();
+  if (control === 'undo') return this.undo();
+  if (control === 'redo') return this.redo();
   this.el.setAttribute('data-control', control);
   this.control = this.controls[control];
   this.emit('changeControl', control);
@@ -376,7 +376,7 @@ Svg.prototype.setStyle = function setStyle(opt) {
   this._redraw([event]);
 };
 
-Svg.prototype._undo = function undo() {
+Svg.prototype.undo = function undo() {
   var event = this.eventStream.pop();
   if (event) {
     this.deleted.push(event);
@@ -387,7 +387,7 @@ Svg.prototype._undo = function undo() {
   this._resetEvents();
 };
 
-Svg.prototype._redo = function redo() {
+Svg.prototype.redo = function redo() {
   var event = this.deleted.pop();
   if (event) {
     this.eventStream.push(event);
@@ -485,4 +485,47 @@ Svg.prototype._addAnchorElements = function addAnchorElements(control) {
       return [d[0], d[1]];
     }
   }
+};
+
+Svg.prototype.setClipboard = function setClipboard(copied) {
+  this.copied = copied;
+};
+
+Svg.prototype.copy = function copy() {
+  this.copied = this.eventStream.toJSON();
+  this.emit('copy', this.copied);
+};
+
+Svg.prototype.cut = function cut() {
+  this.copy();
+  this._removeAllEvents();
+  this._resetEvents();
+};
+
+Svg.prototype._removeAllEvents = function removeAllEvents() {
+  var self = this;
+  this.eventStream.events.forEach(remove);
+  function remove(event) {
+    if (!event.el || event.type === 'delete') return;
+    self.eventStream.push({
+      type: 'delete',
+      target: event.el,
+      args: {},
+      path: event
+    });
+  }
+  this._removeAnchorElements();
+};
+
+Svg.prototype.paste = function paste(e) {
+  var pasteData;
+  try {
+    var data = e.clipboardData.getData('text');
+    pasteData = JSON.parse(data);
+  } catch(x) {}
+  if (!pasteData && !this.copied) return;
+  this._removeAllEvents();
+  Array.prototype.push.apply(this.eventStream.events, (pasteData || this.copied));
+  this.copy();
+  this._resetEvents();
 };

@@ -71,6 +71,23 @@ set current drawing color in hex or rgb
 
 override grid style used
 
+## svg.setClipboard(json)
+
+clipboard context for widget used by paste.
+
+## svg.copy()
+
+save eventStream and emit `copy` event
+
+## svg.cut
+
+save eventStream, remove drawing and emit `copy` event
+
+## svg.paste(e)
+
+paste copied eventStream to drawing.
+if `e` contains clipboard data used that instead of local copied eventStream.
+
 # events
 
 ## svg.changeControl(name)
@@ -80,6 +97,8 @@ override grid style used
 ## svg.changeStyle(style)
 
 ## svg.eventStream(events)
+
+## svg.copy
 
 complete json structure for drawing
 
