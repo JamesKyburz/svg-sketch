@@ -8,13 +8,15 @@ var fs           = require('fs');
 var insertCss    = require('insert-css');
 var Color        = require('color');
 
+var validEvent   = EventStream.validEvent;
+
 var idSequence = 0;
 
 module.exports = Svg;
 inherits(Svg, EventEmitter);
 
-function Svg() {
-  if (!(this instanceof Svg)) return new Svg();
+function Svg(opt) {
+  if (!(this instanceof Svg)) return new Svg(opt);
 
   this.idSequence = ++idSequence;
 
@@ -25,6 +27,8 @@ function Svg() {
     fill: 'rgba(0, 0, 0, 0)',
     stroke: 'rgba(0, 0, 0, 1)'
   };
+
+  this.opt = opt || {};
 
   this._resetStyle();
 
@@ -57,7 +61,8 @@ function Svg() {
     'mouseup': this._up.bind(this),
     'touchend': this._up.bind(this),
     'mousemove': this._move.bind(this),
-    'touchmove': this._move.bind(this)
+    'touchmove': this._move.bind(this),
+    'anchorselect': this._anchorSelect.bind(this)
   };
 
   this.eventStream = new EventStream();
@@ -172,6 +177,10 @@ Svg.prototype.setControl = function setControl(control) {
   this.control = this.controls[control];
   this.emit('changeControl', control);
   if (!this.control) throw new Error('control ' + control + ' not supported');
+  if (this.opt.anchor) {
+    if (!(this.opt.anchor.exclude || /undo|redo|grid/).test(control)) this._removeAnchorElements();
+    if ((this.opt.anchor.include || /rubber|move|text/).test(control)) this._addAnchorElements(control);
+  }
 };
 
 Svg.prototype._init = function init(events) {
@@ -254,6 +263,8 @@ Svg.prototype._redraw = function redraw(events) {
   redraw.id = redraw.id || 0;
   self._triggerEventsChanged();
   events.forEach(create);
+
+  this._addAnchorElements();
 
   function create(event) {
     if (event.type === 'style') {
@@ -407,4 +418,71 @@ Svg.prototype._grid = function toggleGrid() {
   grid.setAttribute('fill', gridDisplay);
   this.el.setAttribute('data-grid', gridDisplay === gridUrl);
   this.setGridStyle();
+};
+
+Svg.prototype._anchorSelect = function anchorSelect(e) {
+  var id = e.target.getAttribute('data-anchor-id');
+  var target = this.el.querySelector('[data-id="' + id + '"]');
+  e.stopPropagation();
+  this._pathSelected({target: target, stopPropagation: e.stopPropagation.bind(e)});
+};
+
+Svg.prototype._removeAnchorElements = function removeAnchorElements() {
+  var self = this;
+  [].forEach.call(this.el.querySelectorAll('.anchor'), removeAnchor);
+  this.eventStream.events.forEach(resetAnchorEl);
+  function removeAnchor(el) {
+    el.removeEventListener('mousedown', self.listeners.anchorselect);
+    el.removeEventListener('touchstart', self.listeners.anchorselect);
+    el.parentNode.removeChild(el);
+  }
+  function resetAnchorEl(event) {
+    delete event.anchorEl;
+  }
+};
+
+Svg.prototype._addAnchorElements = function addAnchorElements(control) {
+  if (control) addAnchorElements.control = control;
+  control = addAnchorElements.control;
+  if (!control) return;
+  if (!this.opt.anchor) return;
+  this.eventStream.events.forEach(add.bind(this));
+  function add(event) {
+    if (!event.el) return;
+    var position = (this.opt.anchor.position || xy)(event);
+    if (!position.filter(Boolean).length) return;
+    if (control === 'text' && !(event.target || event.el).nodeName.match(/text/i)) return;
+    var el = event.anchorEl;
+    if (!el) {
+      el = createElement('ellipse');
+      el.addEventListener('mousedown', this.listeners.anchorselect);
+      el.addEventListener('touchstart', this.listeners.anchorselect);
+      event.anchorEl = el;
+      this.el.appendChild(el);
+    }
+    var id = (event.target || event.el).getAttribute('data-id');
+    el.style.display = (event.target || event.el).style.display;
+    el.setAttribute('cx', position[0]);
+    el.setAttribute('cy', position[1]);
+    el.setAttribute('rx', this.opt.anchor.size || 14);
+    el.setAttribute('ry', this.opt.anchor.size || 14);
+    el.setAttribute('data-anchor-id', id);
+    el.setAttribute('class', 'anchor');
+  }
+
+  function xy(event) {
+    var el = (event.target || event.el);
+    var attributes = el.attributes;
+    var args = [].reduce.call(attributes, function(sum, item) { sum[item.name] = item.value; return sum; }, {});
+    if (event.type === 'text') args.value = el.textContent;
+    if (!validEvent({args: args, type: event.type})) return [];
+    if (event.type === 'ellipse') return [args.cx - args.rx, args.cy];
+    if (event.type === 'path') return path();
+    return [args.x, args.y];
+    function path() {
+      var POINT = /\d+\.?\d*\s*,\s*\d+\.?\d*/g;
+      var d = args.d.match(POINT)[0].split(',').map(Number);
+      return [d[0], d[1]];
+    }
+  }
 };

@@ -26,3 +26,15 @@
 .svg-widget svg[data-control=text] text:hover {
   cursor: pointer;
 }
+
+.svg-widget .anchor {
+  display: none;
+}
+
+.svg-widget svg[data-control=move] .anchor,
+.svg-widget svg[data-control=text] .anchor,
+.svg-widget svg[data-control=rubber] .anchor {
+  fill: rgba(213, 236, 24, 0.2);
+  stroke: rgb(14, 14, 14);
+  display: block;
+}
