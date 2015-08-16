@@ -528,6 +528,5 @@ Svg.prototype.paste = function paste(e) {
   if (!pasteData && !this.copied) return;
   this._removeAllEvents();
   Array.prototype.push.apply(this.eventStream.events, (pasteData || this.copied));
-  this.copy();
   this._resetEvents();
 };
