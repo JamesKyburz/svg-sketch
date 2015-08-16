@@ -230,6 +230,7 @@ Svg.prototype._eventListeners = function(method) {
 };
 
 Svg.prototype._down = function down(e) {
+  this.emit('drawing');
   if (this.control && this.control.ondown) this.control.ondown(e);
 };
 
@@ -242,6 +243,7 @@ Svg.prototype._up = function up(e) {
 };
 
 Svg.prototype._pathSelected = function pathSelected(e) {
+  this.emit('drawing');
   if (!this.control || !this.control.onpathselected) return;
   var target = e.target;
   var id = +target.getAttribute('data-id');
