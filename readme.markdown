@@ -15,8 +15,27 @@ use with [browserify](http://browserify.org)
 # methods
 
 ``` js
-var sketch = require('svg-sketch')();
+var sketch = require('svg-sketch');
 ```
+
+## `sketch([opts={}])`
+
+Returns a new sketch instance.
+
+`opts` is optional
+
+`opts.anchor` is used for move, delete operations and to easily click on
+text elements
+
+If you want anchors to appear then there are the options (they help with deleting and moving elements) :-
+
+* `opts.anchor.size` size of anchor (default is 14px)
+
+* `opts.anchor.exclude` regex checked for a falsy value, used to determine 	when to remove anchor elements. (default is `/undo|redo|grid/`)
+
+* `opts.anchor.include` regex checked for a truthy value, used to determine when to show anchor elements. (default is `/rubber|move|text/`)
+
+* `opts.anchor.position` optional function to determine the xy position of a svg shape.
 
 ## sketch.appendTo(el)
 
