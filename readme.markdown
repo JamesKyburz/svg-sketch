@@ -100,6 +100,10 @@ if `e` contains clipboard data used that instead of local copied eventStream.
 
 ## svg.copy
 
+## svg.drawing
+
+emitted when interacting with drawing
+
 complete json structure for drawing
 
 # install
