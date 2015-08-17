@@ -77,15 +77,15 @@ clipboard context for widget used by paste.
 
 ## svg.copy()
 
-save eventStream and emit `copy` event
+save eventStream json and emit `copy` event
 
 ## svg.cut
 
-save eventStream, remove drawing and emit `copy` event
+save eventStream json, remove drawing and emit `copy` event
 
 ## svg.paste(e)
 
-paste copied eventStream to drawing.
+paste copied eventStream to drawing
 if `e` contains clipboard data used that instead of local copied eventStream.
 
 # events
@@ -98,13 +98,15 @@ if `e` contains clipboard data used that instead of local copied eventStream.
 
 ## svg.eventStream(events)
 
+complete json structure for drawing
+
 ## svg.copy
+
+emitted when drawing copied
 
 ## svg.drawing
 
 emitted when interacting with drawing
-
-complete json structure for drawing
 
 # install
 
