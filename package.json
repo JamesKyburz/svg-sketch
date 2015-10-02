@@ -23,20 +23,20 @@
     "test-browsers": "remove-saucelabs-jobs-by-build && zuul test/*.js"
   },
   "dependencies": {
-    "brfs": "^1.2.0",
-    "color": "^0.8.0",
-    "hyperglue": "^2.0.1",
-    "inherits": "^2.0.1",
-    "insert-css": "^0.2.0",
+    "brfs": "1.4.1",
+    "color": "0.8.0",
+    "hyperglue": "2.0.1",
+    "inherits": "2.0.1",
+    "insert-css": "0.2.0",
     "shallow-copy": "0.0.1",
-    "xtend": "^4.0.0"
+    "xtend": "4.0.0"
   },
   "devDependencies": {
     "faucet": "0.0.1",
-    "function-bind": "^1.0.2",
-    "remove-saucelabs-jobs-by-build": "^1.0.0",
-    "svg-sketch-controls": "^1.0.5",
-    "tape": "^4.0.3",
-    "zuul": "^3.2.0"
+    "function-bind": "1.0.2",
+    "remove-saucelabs-jobs-by-build": "1.0.0",
+    "svg-sketch-controls": "1.0.5",
+    "tape": "4.2.0",
+    "zuul": "3.6.0"
   }
 }
