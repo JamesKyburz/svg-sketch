@@ -37,6 +37,6 @@
     "remove-saucelabs-jobs-by-build": "1.0.1",
     "svg-sketch-controls": "1.0.5",
     "tape": "4.2.2",
-    "zuul": "3.7.1"
+    "zuul": "3.7.2"
   }
 }
