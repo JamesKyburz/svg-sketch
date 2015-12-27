@@ -34,7 +34,7 @@
   "devDependencies": {
     "faucet": "0.0.1",
     "function-bind": "1.0.2",
-    "remove-saucelabs-jobs-by-build": "1.0.3",
+    "remove-saucelabs-jobs-by-build": "1.0.5",
     "svg-sketch-controls": "1.0.6",
     "tape": "4.4.0",
     "zuul": "3.8.0"
