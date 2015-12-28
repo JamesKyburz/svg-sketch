@@ -17,7 +17,7 @@ use with [browserify](http://browserify.org)
 # methods
 
 ``` js
-var sketch = require('svg-sketch');
+var sketch = require('svg-sketch')
 ```
 
 ## `sketch([opts={}])`
