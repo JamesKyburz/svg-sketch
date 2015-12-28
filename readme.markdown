@@ -4,6 +4,8 @@ svg widget with built in json eventstream
 
 svg -> json -> what ever FTW
 
+[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+
 [![build status](https://api.travis-ci.org/JamesKyburz/svg-sketch.svg)](http://travis-ci.org/JamesKyburz/svg-sketch)
 
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/svg-sketch.svg)](https://saucelabs.com/u/svg-sketch)

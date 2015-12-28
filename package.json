@@ -17,10 +17,10 @@
   },
   "main": "index.js",
   "version": "1.4.1",
-  "license": "MIT",
   "scripts": {
     "test": "zuul test/*.js --phantom | faucet",
-    "test-browsers": "remove-saucelabs-jobs-by-build && zuul test/*.js"
+    "test-browsers": "remove-saucelabs-jobs-by-build && zuul test/*.js",
+    "prepublish": "standard"
   },
   "dependencies": {
     "brfs": "1.4.1",
@@ -35,8 +35,10 @@
     "faucet": "0.0.1",
     "function-bind": "1.0.2",
     "remove-saucelabs-jobs-by-build": "1.0.6",
+    "standard": "5.4.1",
     "svg-sketch-controls": "1.0.6",
     "tape": "4.4.0",
     "zuul": "3.8.0"
-  }
+  },
+  "license": "MIT"
 }
