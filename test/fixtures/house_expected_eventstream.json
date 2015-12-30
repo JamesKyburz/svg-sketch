@@ -1,10 +1,10 @@
 [
     {
         "args": {
-            "height": 101,
-            "width": 151,
             "x": 219,
-            "y": 162
+            "y": 162,
+            "width": 151,
+            "height": 101
         },
         "type": "rect"
     },
@@ -34,28 +34,28 @@
     },
     {
         "args": {
-            "height": 30,
-            "width": 23,
             "x": 285,
-            "y": 233
+            "y": 233,
+            "width": 23,
+            "height": 30
         },
         "type": "rect"
     },
     {
         "args": {
-            "height": 27,
-            "width": 28,
             "x": 228,
-            "y": 170
+            "y": 170,
+            "width": 28,
+            "height": 27
         },
         "type": "rect"
     },
     {
         "args": {
-            "height": 28,
-            "width": 27,
             "x": 337,
-            "y": 169
+            "y": 169,
+            "width": 27,
+            "height": 28
         },
         "type": "rect"
     },
