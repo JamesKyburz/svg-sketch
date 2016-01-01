@@ -23,7 +23,7 @@
     "prepublish": "standard"
   },
   "dependencies": {
-    "brfs": "1.4.1",
+    "brfs": "1.4.2",
     "color": "0.8.0",
     "hyperglue": "2.0.1",
     "inherits": "2.0.1",
