@@ -260,6 +260,7 @@ Svg.prototype._resetStyle = function resetStyle () {
 }
 
 Svg.prototype._redraw = function redraw (events) {
+  if (!this.el) return
   var self = this
   events = events || self.eventStream.events
   redraw.id = redraw.id || 0
