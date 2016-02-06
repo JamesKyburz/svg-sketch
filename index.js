@@ -7,6 +7,7 @@ var xtend = require('xtend')
 var fs = require('fs')
 var insertCss = require('insert-css')
 var Color = require('color')
+var path = require('path')
 
 var validEvent = EventStream.validEvent
 
@@ -20,8 +21,8 @@ function Svg (opt) {
 
   this.idSequence = ++idSequence
 
-  insertCss(fs.readFileSync(__dirname + '/style.css', 'utf-8'))
-  this.html = fs.readFileSync(__dirname + '/index.html', 'utf-8')
+  insertCss(fs.readFileSync(path.join(__dirname, '/style.css'), 'utf-8'))
+  this.html = fs.readFileSync(path.join(__dirname, '/index.html'), 'utf-8')
 
   this.DEFAULT_STYLE = {
     fill: 'rgba(0, 0, 0, 0)',
