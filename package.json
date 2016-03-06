@@ -37,7 +37,7 @@
     "remove-saucelabs-jobs-by-build": "1.0.9",
     "standard": "6.0.7",
     "svg-sketch-controls": "1.0.10",
-    "tape": "4.5.0",
+    "tape": "4.5.1",
     "zuul": "3.9.0"
   },
   "license": "MIT"
