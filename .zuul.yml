@@ -14,7 +14,3 @@ browsers:
     version: latest
   - name: chrome
     version: latest
-  - name: ipad
-    version: ['8.4', latest]
-  - name: iphone
-    version: ['8.4', latest]
