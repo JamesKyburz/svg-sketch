@@ -35,7 +35,7 @@
     "faucet": "0.0.1",
     "function-bind": "1.1.0",
     "remove-saucelabs-jobs-by-build": "1.0.9",
-    "standard": "7.1.1",
+    "standard": "7.1.2",
     "svg-sketch-controls": "1.0.11",
     "tape": "4.5.1",
     "zuul": "3.10.1"
