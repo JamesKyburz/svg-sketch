@@ -16,7 +16,7 @@
     ]
   },
   "main": "index.js",
-  "version": "1.4.15",
+  "version": "1.4.16",
   "scripts": {
     "test": "zuul test/*.js --phantom | faucet",
     "test-browsers": "remove-saucelabs-jobs-by-build && zuul test/*.js",
