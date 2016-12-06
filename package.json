@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "brfs": "1.4.3",
-    "color": "1.0.1",
+    "color": "1.0.2",
     "hyperglue": "2.0.1",
     "inherits": "2.0.3",
     "insert-css": "2.0.0",
