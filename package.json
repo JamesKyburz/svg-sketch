@@ -20,8 +20,15 @@
   "scripts": {
     "test": "zuul test/*.js --phantom | faucet",
     "test-browsers": "remove-saucelabs-jobs-by-build && zuul test/*.js",
+    "build": "browserify -s SvgSketch -e ./ | uglifyjs -c warnings=false -m > svg-sketch.min.js",
     "prepublish": "standard"
   },
+  "files": [
+    "event_stream.js",
+    "index.html",
+    "index.js",
+    "style.css"
+  ],
   "dependencies": {
     "brfs": "1.4.3",
     "color": "1.0.2",
