@@ -1,5 +1,7 @@
 # svg-sketch
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/JamesKyburz/svg-sketch.svg)](https://greenkeeper.io/)
+
 svg widget with built in json eventstream
 
 svg -> json -> what ever FTW
