@@ -30,7 +30,7 @@
     "style.css"
   ],
   "dependencies": {
-    "brfs": "1.4.3",
+    "brfs": "2.0.2",
     "color": "0.11.4",
     "hyperglue": "2.0.1",
     "inherits": "2.0.3",
