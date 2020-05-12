@@ -34,7 +34,7 @@
     "color": "0.11.4",
     "hyperglue": "2.0.1",
     "inherits": "2.0.3",
-    "insert-css": "0.1.0",
+    "insert-css": "2.0.0",
     "shallow-copy": "0.0.1",
     "xtend": "4.0.1"
   },
