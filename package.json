@@ -44,7 +44,7 @@
     "remove-saucelabs-jobs-by-build": "1.0.19",
     "standard": "10.0.2",
     "svg-sketch-controls": "1.0.15",
-    "tape": "4.6.3",
+    "tape": "5.2.1",
     "zuul": "3.11.1",
     "zuul-ngrok": "4.0.0"
   },
